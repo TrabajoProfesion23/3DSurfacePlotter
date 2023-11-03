@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 
 [RequireComponent(typeof(MeshFilter))]
@@ -47,8 +48,13 @@ public static class DeformerUtilities
     //[BurstCompile]
     public static float CalculateDisplacement(Vector3 position, float time, float speed, float amplitude)
     {
-        /*var distance = 6f - Vector3.Distance(position, Vector3.zero);
-        return Mathf.Sin(5 * speed + distance) * amplitude;*/
-        return position.x*position.x/4 - position.z*position.z/4;
+        Expression e = new Expression("Sqrt(Pow(10000,2)-Pow([x],2)-Pow([z],2))"); //Pow(1,2)-Pow([x],2)-Pow([z],2)
+
+        e.Parameters["x"]=position.x;
+        e.Parameters["z"]=position.z;
+        float y = 0;
+        float.TryParse(e.Evaluate(null).ToString(), out y);
+
+        return y;
     }
 }
