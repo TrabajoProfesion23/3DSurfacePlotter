@@ -31,7 +31,14 @@ public class ModifyText : MonoBehaviour
     {
         if (s == "back")
         {
-            expression = expression[..^1];
+            if (expression[^1] == ']')
+            {
+                expression = expression[..^3];
+            }
+            else 
+            {
+                expression = expression[..^1];
+            }
         } else
         {
             expression += s;
