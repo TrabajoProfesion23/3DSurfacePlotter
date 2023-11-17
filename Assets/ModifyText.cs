@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class ModifyText : MonoBehaviour
 {
-    public String expression;
+    private String expression;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +29,14 @@ public class ModifyText : MonoBehaviour
 
     public void addChar(string s)
     {
-        if (s.Equals("back"))
+        if (s == "back")
         {
-            expression.Remove(expression.Length-1);
+            expression = expression[..^1];
+        } else
+        {
+            expression += s;
         }
-        expression += s;
+        
     }
 
     public string getExpression()

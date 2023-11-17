@@ -52,10 +52,14 @@ public static class DeformerUtilities
     public static float CalculateDisplacement(Vector3 position, float time, float speed, float amplitude, string exp)
     {
         Expression e = new Expression(exp);
+        if (e.HasErrors())
+        {
+            return 0;
+        }
         //Expression e = new Expression("Sqrt(Pow(10000,2)-Pow([x],2)-Pow([z],2))"); //Pow(1,2)-Pow([x],2)-Pow([z],2)
 
         e.Parameters["x"]=position.x;
-        e.Parameters["z"]=position.z;
+        e.Parameters["y"]=position.z;
         float y = 0;
         float.TryParse(e.Evaluate(null).ToString(), out y);
 
