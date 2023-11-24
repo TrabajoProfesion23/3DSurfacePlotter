@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _amplitude: 0.25
-  text: {fileID: 0}
+  text: {fileID: 1568617505}
 --- !u!64 &229027419
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4388,6 +4388,7 @@ GameObject:
   - component: {fileID: 1543903876}
   - component: {fileID: 1543903875}
   - component: {fileID: 1543903874}
+  - component: {fileID: 1543903878}
   m_Layer: 0
   m_Name: Buttons-GridLayout (Buttons) (1)
   m_TagString: Untagged
@@ -4408,11 +4409,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1568617506}
-  m_Father: {fileID: 1818231822}
+  m_Father: {fileID: 1269325308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 52, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 164, y: 22.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1543903874
@@ -4485,6 +4486,26 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &1543903878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543903872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1568617505
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,7 +5357,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1543903873}
   - {fileID: 1986987725}
   m_Father: {fileID: 1269325308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7643,7 +7663,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3450833885017814221, guid: f443144a6d408c34bb8a7d70a73644c4, type: 3}
-      insertIndex: 1
+      insertIndex: 0
+      addedObject: {fileID: 1543903873}
+    - targetCorrespondingSourceObject: {fileID: 3450833885017814221, guid: f443144a6d408c34bb8a7d70a73644c4, type: 3}
+      insertIndex: 2
       addedObject: {fileID: 1818231822}
     - targetCorrespondingSourceObject: {fileID: 8110664055982005406, guid: f443144a6d408c34bb8a7d70a73644c4, type: 3}
       insertIndex: -1
