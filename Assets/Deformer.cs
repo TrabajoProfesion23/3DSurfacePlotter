@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting.Dependencies.NCalc;
 using Unity.VisualScripting;
+using System;
 
 
 [RequireComponent(typeof(MeshFilter))]
@@ -13,13 +14,46 @@ public class SingleThreadedDeformer : MonoBehaviour
     [SerializeField] protected GameObject text;
     protected Mesh Mesh;
 
+    private Vector3[] _vertices;
+    private int[] tri = new int[100 * 100 * 6];
+
     protected void Awake()
     {
-        Mesh = GetComponent<MeshFilter>().mesh;
-        _vertices = Mesh.vertices;
-    }
+        Mesh = this.GetComponent<MeshFilter>().mesh;
 
-    private Vector3[] _vertices;
+        for (int i = 0; i < 100; i++) 
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                int k = i * 100 + j;
+                Debug.Log(k);
+                _vertices[k] = new Vector3(i,0f,j);
+            }
+        }
+
+        
+        int id = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                //first triangle..
+                tri[id] = i * 101 + j;
+                tri[id + 1] = tri[id] + 101;
+                tri[id + 2] = tri[id + 1] + 1;
+
+                //second triangle..
+                tri[id + 3] = tri[id];
+                tri[id + 4] = tri[id + 2];
+                tri[id + 5] = tri[id] + 1;
+
+                id += 6;
+            }
+        }
+
+
+        //_vertices = Mesh.vertices;
+    }   
 
 
     private void Update()
@@ -41,6 +75,7 @@ public class SingleThreadedDeformer : MonoBehaviour
         Mesh.MarkDynamic();
         // Update the mesh visually just by setting the new vertices array
         Mesh.SetVertices(_vertices);
+        Mesh.triangles = tri;
         // Must be called so the updated mesh is correctly affected by the light
         Mesh.RecalculateNormals();
     }
@@ -56,7 +91,6 @@ public static class DeformerUtilities
         {
             return 0;
         }
-        //Expression e = new Expression("Sqrt(Pow(10000,2)-Pow([x],2)-Pow([z],2))"); //Pow(1,2)-Pow([x],2)-Pow([z],2)
 
         e.Parameters["x"]=position.x;
         e.Parameters["y"]=position.z;
