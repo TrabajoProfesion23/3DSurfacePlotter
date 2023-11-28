@@ -4,12 +4,13 @@ using UnityEngine;
 using Unity.VisualScripting.Dependencies.NCalc;
 using Unity.VisualScripting;
 using System;
-
+using UnityEditorInternal;
 
 [RequireComponent(typeof(MeshFilter))]
 public class SingleThreadedDeformer : MonoBehaviour
 {
     [SerializeField] protected GameObject text;
+    [SerializeField] protected bool _inverted = false;
     protected Mesh Mesh;
 
     protected int nX = 20;
@@ -80,7 +81,9 @@ public class SingleThreadedDeformer : MonoBehaviour
         {
             var position = _vertices[i];
             string exp = text.GetComponent<ModifyText>().getExpression();
-            position.y = DeformerUtilities.CalculateDisplacement(position, exp);
+
+            position.y = DeformerUtilities.CalculateDisplacement(position, Time.time, _speed, _amplitude, exp);
+            if (_inverted) position.y = -position.y;
             _vertices[i] = position;
         }
 
@@ -110,7 +113,6 @@ public static class DeformerUtilities
         e.Parameters["y"]=position.z;
         float y = 0;
         float.TryParse(e.Evaluate(null).ToString(), out y);
-
         return y;
     }
 }
