@@ -82,7 +82,7 @@ public class SingleThreadedDeformer : MonoBehaviour
             var position = _vertices[i];
             string exp = text.GetComponent<ModifyText>().getExpression();
 
-            position.y = DeformerUtilities.CalculateDisplacement(position, Time.time, _speed, _amplitude, exp);
+            position.y = DeformerUtilities.CalculateDisplacement(position, exp);
             if (_inverted) position.y = -position.y;
             _vertices[i] = position;
         }
