@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: _HolaMundoHololens
+  companyName: Gafotas
+  productName: 3D Surface Plotter
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -684,7 +684,7 @@ PlayerSettings:
   metroCertificateNotAfter: 808b2c0a6e22db01
   metroApplicationDescription: HolaMundoHololens
   wsaImages: {}
-  metroTileShortName: HolaMundoHololens
+  metroTileShortName: 3D Surface Plotter
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

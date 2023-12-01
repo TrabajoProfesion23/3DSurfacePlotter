@@ -4,7 +4,6 @@ using UnityEngine;
 using Unity.VisualScripting.Dependencies.NCalc;
 using Unity.VisualScripting;
 using System;
-using UnityEditorInternal;
 
 [RequireComponent(typeof(MeshFilter))]
 public class SingleThreadedDeformer : MonoBehaviour
