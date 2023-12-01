@@ -20,6 +20,7 @@ public class SingleThreadedDeformer : MonoBehaviour
 
     private Vector3[] _vertices;
     private int[] tri;
+    private string oldexp;
 
     protected void Awake()
     {
@@ -66,24 +67,34 @@ public class SingleThreadedDeformer : MonoBehaviour
         // Must be called so the updated mesh is correctly affected by the light
         Mesh.RecalculateNormals();
         Mesh.RecalculateBounds();
+
+        oldexp = "";
     }   
 
 
     private void Update()
     {
-        Deform();
+        string exp = text.GetComponent<ModifyText>().getExpression();
+        if (exp!=oldexp) 
+        {
+            Deform(exp);
+            oldexp = exp;
+        }        
     }
 
-    private void Deform()
+    protected void Deform(string exp)
     {
         Debug.Log(_vertices.Length);
         for (var i = 0; i < _vertices.Length; i++)
         {
-            var position = _vertices[i];
-            string exp = text.GetComponent<ModifyText>().getExpression();
+            var position = _vertices[i];            
 
             position.y = DeformerUtilities.CalculateDisplacement(position, exp);
-            if (_inverted) position.y = -position.y;
+            if (_inverted) 
+            {
+                position.y = -position.y;
+            }
+            
             _vertices[i] = position;
         }
 
@@ -109,10 +120,10 @@ public static class DeformerUtilities
             return 0;
         }
 
-        e.Parameters["x"]=position.x;
-        e.Parameters["y"]=position.z;
+        e.Parameters["x"]=position.x * 10;
+        e.Parameters["y"]=position.z * 10;
         float y = 0;
         float.TryParse(e.Evaluate(null).ToString(), out y);
-        return y;
+        return y/10;
     }
 }
