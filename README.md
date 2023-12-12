@@ -12,3 +12,6 @@ La escena de Unity con todos los objetos se encuentra en ```Assets/Scenes/Sample
 2. Descargar el proyecto
 3. Abrir el proyecto con Unity
 4. Hacer click en el botón de "reproducir" situado en la sección superior del editor
+
+## Para subir a las gafas
+Recomendamos seguir el tutorial ubicado en https://learn.microsoft.com/en-us/training/paths/beginner-hololens-2-tutorials/, ya que no es un proceso sencillo.
